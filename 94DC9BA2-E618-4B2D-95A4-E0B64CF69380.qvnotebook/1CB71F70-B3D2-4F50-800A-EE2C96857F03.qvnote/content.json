@@ -1,0 +1,9 @@
+{
+  "title": "epoll",
+  "cells": [
+    {
+      "type": "text",
+      "data": "CC = $(shell which clang 2&gt;/dev/null || which gcc)"
+    }
+  ]
+}

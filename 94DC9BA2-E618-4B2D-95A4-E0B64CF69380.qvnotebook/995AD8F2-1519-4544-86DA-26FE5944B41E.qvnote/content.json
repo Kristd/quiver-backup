@@ -1,0 +1,10 @@
+{
+  "title": "fopen选项",
+  "cells": [
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "FILE * fopen(const char *path, const char *mode);\n\n/*\nr\n只读，input时fseek可操作文件指针位置\nr+\n可读可写，input和output时fseek可操作文件指针位置\n------\nw\n只写，创建新文件并覆盖，output时fseek可操作文件指针位置\nw+\n可读可写，创建新文件并覆盖，input和output时fseek可操作文件指针位置\n------\na\n可读可写，在文件末尾添加内容，如果文件不存在则新建，只有output时可使用fseek移动文件指针\na+\n可读可写，在文件末位添加内容，如果文件不存在则新建，input和output时可使用fseek移动文件指针位置\n*/"
+    }
+  ]
+}

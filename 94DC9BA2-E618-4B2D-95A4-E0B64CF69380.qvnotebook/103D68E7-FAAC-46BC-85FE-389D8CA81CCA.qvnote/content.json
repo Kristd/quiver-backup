@@ -1,0 +1,66 @@
+{
+  "title": "flask",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "##变量规则"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "data": "通过把 URL 的一部分标记为 <variable_name> 就可以在 URL 中添加变量。标记的 部分会作为关键字参数传递给函数。通过使用 <converter:variable_name> ，可以 选择性的加上一个转换器，为变量指定规则。请看下面的例子:\n\n@app.route('/user/<username>')\ndef show_user_profile(username):\n    # show the user profile for that user\n    return 'User %s' % username\n\n@app.route('/post/<int:post_id>')\ndef show_post(post_id):\n    # show the post with the given id, the id is an integer\n    return 'Post %d' % post_id\n"
+    },
+    {
+      "type": "markdown",
+      "data": "##上下文"
+    },
+    {
+      "type": "text",
+      "data": "<p>在 Flask 中有两种上下文：程序上下文和请求上下文，这两种上下文提供的变量如下：</p>\n\n<table>\n<thead>\n<tr>\n  <th>变量名</th>\n  <th align=\"center\">上下文</th>\n  <th align=\"center\">说明</th>\n</tr>\n</thead>\n<tbody><tr>\n  <td>current_app</td>\n  <td align=\"center\">程序上下文</td>\n  <td align=\"center\">当前激活程序的程序实例</td>\n</tr>\n<tr>\n  <td>g</td>\n  <td align=\"center\">程序上下文</td>\n  <td align=\"center\">处理请求时用作临时存储的对象，每次请求都会重设这个变量</td>\n</tr>\n<tr>\n  <td>request</td>\n  <td align=\"center\">请求上下文</td>\n  <td align=\"center\">请求对象，封装了客户端发出的 HTTP 请求中的内容</td>\n</tr>\n<tr>\n  <td>session</td>\n  <td align=\"center\">请求上下文</td>\n  <td align=\"center\">用户会话，用户存储请求之间需要“记住”的值的字典</td>\n</tr>\n</tbody></table>\n\n\n<p>Flask 会在分发请求之前激活程序和请求上下文，请求处理完成后再将其删除</p>"
+    },
+    {
+      "type": "markdown",
+      "data": "##请求钩子"
+    },
+    {
+      "type": "text",
+      "data": "<p>在处理请求之前或者之后执行代码会很有用，Flask 提供了注册通用函数的功能，注册的函数可在请求被分发到视图函数之前或之后调用。请求钩子使用修饰器实现。Flask 支持以下四种钩子：</p>\n\n<table>\n<thead>\n<tr>\n  <th>钩子名</th>\n  <th align=\"center\">上下文</th>\n</tr>\n</thead>\n<tbody><tr>\n  <td>before_first_request</td>\n  <td align=\"center\">注册一个函数，在处理第一个请求之前运行</td>\n</tr>\n<tr>\n  <td>before_request</td>\n  <td align=\"center\">注册一个函数，在每次请求之前运行</td>\n</tr>\n<tr>\n  <td>after_request</td>\n  <td align=\"center\">注册一个函数，如果没有未处理的异常抛出，在每次请求后运行</td>\n</tr>\n<tr>\n  <td>teardown_request</td>\n  <td align=\"center\">注册一个函数，即使有未处理的异常抛出，也在每次请求后运行</td>\n</tr>\n</tbody></table>\n\n\n<p>Flask 会在分发请求之前激活程序和请求上下文，请求处理完成后再将其删除在请求钩子函数和视图函数之间共享数据一般使用上下文全局变量g</p>"
+    },
+    {
+      "type": "markdown",
+      "data": "##jinja2模版变量"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<p>A value from a dictionary: {{ mydict['key'] }}.</p>\n<p>A value froma list: {{ mylist[3] }}.</p>\n<p>A value froma list, with a variable index: {{ mylist[myintvar] }}.</p>\n<p>A value froman object\\'s method: {{ myobj.somemethod() }}.</p>\n\nfrom flask import Flask\nfrom flask import render_template\n\napp = Flask(__name__)\n\n\nclass Human():\n    def somemethod(self):\n        return 'Flask say Hello world!'\n\n\n@app.route('/<name>')\ndef user(name):\n    mydict = {\"key\": \"This is a Flask Program\"}\n    mylist = ['it', 'Hello', 'the', 'world']\n    myintvar = 0\n    myobj = Human()\n\n    return render_template('user.html', name=name, mydict=mydict, mylist=mylist, myintvar=myintvar, myobj=myobj)\n\n\nif __name__ == '__main__':\n    app.run()"
+    },
+    {
+      "type": "markdown",
+      "data": "##jinja2 条件控制"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "{{ % if user %}}\n    hello, {{ user }}\n{{% else %}}\n    hello, world\n{{% endif % }}\n\n{% for comment in comments %}\n    <li>{{ comment }}</li>\n{% endfor %}"
+    },
+    {
+      "type": "markdown",
+      "data": "##jinja2 模板继承"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<!--base.html-->\n<html>\n<head>\n    {% block head%}\n        <title>\n            {% block title%}{% endblock%}- My Application\n        </title>\n    {% endblock %}\n</head>\n<body>\n    {% block body%}\n    {% endblock%}\n</body>\n</html>"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<!--child.html-->\n{% extends 'base.html'%}\n\n{% block title%}\n    Index\n{% endblock %}\n\n{% block head%}\n    {{ super() }}\n    <style></style>\n{% endblock%}\n\n{% block body%}\n    <h1>Helll, World!</h1>\n{% endblock%}"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

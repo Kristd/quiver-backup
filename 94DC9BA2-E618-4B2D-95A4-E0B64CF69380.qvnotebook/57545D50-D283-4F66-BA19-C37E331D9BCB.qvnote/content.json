@@ -1,0 +1,9 @@
+{
+  "title": "内存结构",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C30FC0C387974623C1A83AA4688C6779.jpg\" alt=\"memory.jpg\"><div>1）text及data由exec从程序中读入</div><div>2）bss由exec初始化为0</div><div>3）stack以上为命令行参数和环境变量</div><div><br></div>"
+    }
+  ]
+}

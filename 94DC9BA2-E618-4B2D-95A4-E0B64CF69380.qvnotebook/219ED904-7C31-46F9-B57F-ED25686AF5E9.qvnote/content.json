@@ -1,0 +1,49 @@
+{
+  "title": "微信服务",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>&gt;&gt;&gt;&gt;&gt;基本功能&lt;&lt;&lt;&lt;&lt;</div><div>0. 创建机器人</div><div>action = \"create\"</div>"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n  \"action\": \"create\",\n  \"conf\": {\n  \"group\": \"广东麻将\", //微信群名称\n  \"keywords\": {\n  \"下载/游戏\": {\n  \"content\": \"游戏下载：http://qyq.xoyo.com/h5/download/?app_id=XYd0ogCwfB4wYCqdikYooVe\",\n  \"img\":\"/data/pic_tmp/bf3/510/a68/1d4f42e0cdcb0aaf8c8f35c5d297c2ab.gif\"\n  },\n  \"管理员\": {\n  \"content\": \"现在有事，私聊我，等下回复你！😘\",\n  }\n  } //自动回复关键词\n  },\n  \"id\":6 //用户ID\n}"
+    },
+    {
+      "type": "text",
+      "data": "<div>0.1 创建一个session，把对应的用户ID，群属性和关键词保存</div><div>0.2 获取登陆二维码，返回到前端并模拟扫码动作，状态码保存到对应的session中，提供状态码轮询</div><div>0.3 获取登陆成功并保存cookies</div><div>0.4 获取联系人列表（是否需要保存会话列表）</div>"
+    },
+    {
+      "type": "text",
+      "data": "<div>1. 获取登陆状态</div><div>action = \"login\"</div>"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n  \"action\": \"login\",\n  \"id\":6 //用户ID\n}"
+    },
+    {
+      "type": "text",
+      "data": "1.1 轮询session中登陆状态码，访问时是否需要加锁处理<div><div><br></div><div>2. 接受消息推送</div><div>action = \"send\"</div></div>"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n  \"action\": \"send\",\n  \"id\": 6, //用户ID\n  \"group\":\"广东麻将\",\n  \"params\": {\n  \"type\": \"text\", // text文字 imgage 图片\n  \"method\": \"new_player\", //触发事件类型\n  \"content\": \"悦己刚刚进入广东麻将[24328]号房，1缺3，大家快来打牌。\"\n  }\n}"
+    },
+    {
+      "type": "text",
+      "data": "<div>2.1 消息推送主键包括用户ID，群名</div><div>2.2 收到消息推送请求，遍历session列表，找到对应用户的配置来调用消息发送接口（协程处理？）</div><div><br></div><div><div>3. 关键词推送消息</div><div>3.1 刷新后台消息</div><div>3.2 判断接收消息中是否有关键词，根据关键词推送消息（与接受消息推送处理步骤类似）</div></div><div><br></div><div><div>4. 用户退出情况</div><div>4.1 退出请求</div></div><div>action = \"exit\"<br></div>"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n  \"action\": \"exit\",\n  \"id\":6 //用户ID\n}"
+    },
+    {
+      "type": "text",
+      "data": "4.2 刷新退出状态<div><br><div>&gt;&gt;&gt;&gt;&gt;功能流程&lt;&lt;&lt;&lt;&lt;</div><div>1. 判断消息ID</div><div>create - 返回qrcode-url／login - 返回轮询状态</div><div>2. 保存用户配置和cookies，一个robot对应一个session，一个用户ID对应一个robot</div><div>3. 一个robot需要一个循环刷新后台消息的协程，前端推送消息通过map找到对应的session来发送消息，</div><div>消息发送结果都需要通过channel返回到哪里来统一处理？</div><div>4. 同步刷新再获取消息，再根据消息数组过滤关键词推送消息</div></div>"
+    }
+  ]
+}

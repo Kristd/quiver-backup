@@ -1,0 +1,9 @@
+{
+  "title": "http_parser(nginx)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "通过记录字段的位移及长度获取url的信息，而不需要实际存储url本身"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "ps命令查看线程",
+  "cells": [
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "ps -mo THREAD -T (pid)"
+    }
+  ]
+}

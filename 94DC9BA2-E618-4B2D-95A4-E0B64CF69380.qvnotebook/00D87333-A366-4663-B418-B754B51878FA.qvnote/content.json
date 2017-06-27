@@ -1,0 +1,10 @@
+{
+  "title": "va_list & va_start & va_end用法",
+  "cells": [
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "va_list args;\nva_start(args, format);\n//int ret = va_arg(args, int);\nvfprintf(fp, format, args);\nva_end(args);"
+    }
+  ]
+}

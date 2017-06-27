@@ -1,0 +1,9 @@
+{
+  "title": "makefile",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>wildcard patsbust notdir</div><div><br></div><div>make -s ——— 不输出任何命令</div><div>make -n ——— 只显示命令不执行任何命令</div><div>make -i ——— 忽略错误（命令内使用\"-\"：-rm *.o）</div><div>make -k ——— 继续执行命令</div><div>make -w ——— 显示将要执行的工作目录</div><div><br></div><div>&lt;定义命令包&gt;</div><div>define &lt;package&gt;</div><div>...</div><div>endef</div>"
+    }
+  ]
+}
