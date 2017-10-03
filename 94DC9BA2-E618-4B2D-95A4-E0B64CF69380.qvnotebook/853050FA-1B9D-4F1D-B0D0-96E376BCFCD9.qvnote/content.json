@@ -1,0 +1,31 @@
+{
+  "title": "first code",
+  "cells": [
+    {
+      "type": "text",
+      "data": "1. 使用intent调用其他活动，并且通过intent来传递上下文数据"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "Intent intent = new Intent(LoginActivity.this, MainActivity.class);\nstartActivity(intent);"
+    },
+    {
+      "type": "text",
+      "data": "2. 网络请求OKHttp<div><br></div><div><br></div><div><br></div><div><br><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "3. 活动间传递数据"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "//该方法可链式调用\nIntent.putExtra(String key, String value).putExtra(String key, String value)\n//先获取intent再获取数据\ngetIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);\n\n//父活动调用子活动\nstartActivityForResult(i, REQUEST_CODE_CHEAT);\n//子活动返回父活动传递数据\nIntent data = new Intent();\ndata.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);\nsetResult(RESULT_OK, data);\n"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

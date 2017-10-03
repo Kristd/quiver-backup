@@ -1,0 +1,9 @@
+{
+  "title": "Raft论文译文",
+  "cells": [
+    {
+      "type": "text",
+      "data": "日志复制<div><br></div><div>领导者和跟随者保持一致的机制</div><div>领导者把nextIndex（当前index+1）发送给跟随者，跟随者返回每次日志的校验结果</div><div>1. 校验失败</div><div>领导者把nextIndex-1并重新发送给跟随者进行校验</div><div>2. 校验成功</div><div>日志在某个index达成一致，领导者把跟随者的冲突日志删除，并把自己的日志同步复制给跟随者</div><div><br></div>"
+    }
+  ]
+}

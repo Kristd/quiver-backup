@@ -8,7 +8,7 @@
     {
       "type": "code",
       "language": "json",
-      "data": "{\n  \"action\": \"create\",\n  \"conf\": {\n  \"group\": \"广东麻将\", //微信群名称\n  \"keywords\": {\n  \"下载/游戏\": {\n  \"content\": \"游戏下载：http://qyq.xoyo.com/h5/download/?app_id=XYd0ogCwfB4wYCqdikYooVe\",\n  \"img\":\"/data/pic_tmp/bf3/510/a68/1d4f42e0cdcb0aaf8c8f35c5d297c2ab.gif\"\n  },\n  \"管理员\": {\n  \"content\": \"现在有事，私聊我，等下回复你！😘\",\n  }\n  } //自动回复关键词\n  },\n  \"id\":6 //用户ID\n}"
+      "data": "{\n    \"action\": \"create\",\n    \"conf\": {\n        \"group\": \"广东麻将\", //微信群名称\n        \"keywords\": {\n            \"下载/游戏\": {\n                \"content\": \"游戏下载：http://qyq.xoyo.com/h5/download/?app_id=XYd0ogCwfB4wYCqdikYooVe\",\n                \"img\":\"/data/pic_tmp/bf3/510/a68/1d4f42e0cdcb0aaf8c8f35c5d297c2ab.gif\"\n            },\n            \"管理员\": {\n                \"content\": \"现在有事，私聊我，等下回复你！😘\",\n            }\n        } //自动回复关键词\n    },\n    \"id\":6 //用户ID\n}"
     },
     {
       "type": "text",
@@ -21,7 +21,7 @@
     {
       "type": "code",
       "language": "json",
-      "data": "{\n  \"action\": \"login\",\n  \"id\":6 //用户ID\n}"
+      "data": "{\n    \"action\": \"login\",\n    \"id\":6 //用户ID\n}"
     },
     {
       "type": "text",
@@ -30,7 +30,7 @@
     {
       "type": "code",
       "language": "json",
-      "data": "{\n  \"action\": \"send\",\n  \"id\": 6, //用户ID\n  \"group\":\"广东麻将\",\n  \"params\": {\n  \"type\": \"text\", // text文字 imgage 图片\n  \"method\": \"new_player\", //触发事件类型\n  \"content\": \"悦己刚刚进入广东麻将[24328]号房，1缺3，大家快来打牌。\"\n  }\n}"
+      "data": "{\n    \"action\": \"send\",\n    \"id\": 6, //用户ID\n    \"group\":\"广东麻将\",\n    \"params\": {\n        \"type\": \"text\", // text文字 imgage 图片\n        \"method\": \"new_player\", //触发事件类型\n        \"content\": \"悦己刚刚进入广东麻将[24328]号房，1缺3，大家快来打牌。\"\n    }\n}"
     },
     {
       "type": "text",
@@ -39,11 +39,11 @@
     {
       "type": "code",
       "language": "json",
-      "data": "{\n  \"action\": \"exit\",\n  \"id\":6 //用户ID\n}"
+      "data": "{\n    \"action\": \"exit\",\n    \"id\":6 //用户ID\n}"
     },
     {
       "type": "text",
-      "data": "4.2 刷新退出状态<div><br><div>&gt;&gt;&gt;&gt;&gt;功能流程&lt;&lt;&lt;&lt;&lt;</div><div>1. 判断消息ID</div><div>create - 返回qrcode-url／login - 返回轮询状态</div><div>2. 保存用户配置和cookies，一个robot对应一个session，一个用户ID对应一个robot</div><div>3. 一个robot需要一个循环刷新后台消息的协程，前端推送消息通过map找到对应的session来发送消息，</div><div>消息发送结果都需要通过channel返回到哪里来统一处理？</div><div>4. 同步刷新再获取消息，再根据消息数组过滤关键词推送消息</div></div>"
+      "data": "4.2 刷新退出状态<div><br><div>&gt;&gt;&gt;&gt;&gt;功能流程&lt;&lt;&lt;&lt;&lt;</div><div>1. 判断消息ID，create - 返回qrcode-url／login - 返回轮询状态</div><div>2. 保存用户配置和cookies，一个robot对应一个session，一个用户ID对应一个robot</div><div>3.1 循环刷新后台消息的协程，通过chan和socket传递消息（退出信号）</div><div>3.2 前端推送消息通过用户ID来mapping找到对应的session来发送消息</div><div>消息发送结果都需要通过channel返回到哪里来统一处理？</div><div>4. 同步刷新再获取消息，再根据消息数组过滤关键词推送消息</div></div><div><br></div><div>&gt;&gt;&gt;&gt;&gt;错误状态吗&lt;&lt;&lt;&lt;&lt;</div><div><div>[1101]</div><div>登陆状态不正确</div><div><br></div><div>[1204]&nbsp;</div><div>收信用户名不正确</div></div><div><br></div><div><br></div>"
     }
   ]
 }

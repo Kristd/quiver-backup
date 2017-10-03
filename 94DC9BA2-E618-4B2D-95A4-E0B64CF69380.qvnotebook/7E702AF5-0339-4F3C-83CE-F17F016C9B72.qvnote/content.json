@@ -1,0 +1,9 @@
+{
+  "title": "Wireshark客户端权限",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>cd /dev</div>sudo chown kristd:wheel bpf*"
+    }
+  ]
+}

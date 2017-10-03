@@ -1,0 +1,9 @@
+{
+  "title": "服务端",
+  "cells": [
+    {
+      "type": "text",
+      "data": "&gt;&gt;&gt; 打包<div>1. 编译src/make.go，生成make可执行文件</div><div>2. 执行src/pkg.sh</div><div>3. 打包game目录，命名格式plm_gs_common_日期.zip</div><div>4. 执行make程序，make -md5=plm_gs_common_日期.zip &gt; plm_gs_common_日期.zip.md5</div><div>5. md5文件名需要和压缩包保持一致</div><div>6. 添加desc文件，文件名与压缩包保持一致，文件内容为更新具体内容</div><div><br></div><div>game目录结构</div><div><img src=\"quiver-image-url/C8BD95F082114A03B887C972FFB0E80C.png\" width=\"222\" height=\"79\"><br></div><div><br></div><div>生成文件：</div><div><img src=\"quiver-image-url/A4447BA7F9BE62F6629D148F9857894D.png\" width=\"372\" height=\"83\"></div>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "商城更新内容",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>src</div>1. BaseDeskPlayerView.lua<div>2. PlayerEmojiView.lua</div><div>3. UserInfoDialog.lua</div><div>4. MessageHandler.lua</div>"
+    }
+  ]
+}
